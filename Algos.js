@@ -120,6 +120,6 @@ function firstNonRepeatingCharacter(string) {
 						///if the first characterFrequency[i] is equal to 1. That is the answer
 	}
 	
-		return -1; ///// else return -1
+		return -1; ///// else return -1    //
 }
 
