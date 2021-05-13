@@ -123,3 +123,19 @@ function firstNonRepeatingCharacter(string) {
 		return -1; ///// else return -1    //
 }
 
+//////ARRAY OF ARRAY SUM //// RECURSION
+
+function productSum(array, multiplier = 1) { ////// Multiply by dept of array so multiplier starts with 1
+	// Write your code here.
+	  let sum = 0; ///// total sum 
+	  for (const element of array){    /////// for loop verion to check each element in array
+		  if (Array.isArray(element)){  ///////// check if element is an Array
+			  sum+= productSum(element, multiplier + 1)   /////// RECURSION 
+		  } else {
+			  sum += element; //// if element is not an array, add element to sum
+		  }
+	  }
+	  return sum * multiplier;  ///// after going through the array multiply by dept and return
+  }
+  
+
