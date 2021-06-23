@@ -14,10 +14,82 @@
 ////// PALINDROME:
 // O(N) time | O(1) 
 
+///// STACKS!!!
+
+var letters = [];
+
+var word = "cbddbc"
+var rword = "";
+
+for (var i = 0; i < word.length; i++) {
+  letters.push(word[i])
+  console.log(letters)
+}
+
+for (var i = 0; i < word.length; i++) {
+  rword += letters.pop()
+  console.log(rword)
+}
+
+if(rword === word){
+  console.log(word + " is a palandrome")
+} else {
+  console.log(word + " is not a palandrome")
+}
+
+
+var Stack = function(){
+	this.count = 0;
+	this.storage = {};
+	console.log("1st",this)
+	
+	this.push = function(value) {
+	  this.storage[this.count] = value;
+	  this.count++
+	  console.log("push", this)
+	}
+	
+	this.pop = function() {
+	  if(this.count === 0) {
+		return undefined;
+		  
+	  }
+	
+	  this.count--;
+	  var result = this.storage[this.count];
+	  delete this.storage[this.count];
+	  return result;
+	  console.log("pop", this)
+	}
+	
+	this.size = function(){
+	  return this.count;
+	  console.log("size", this)
+	}
+	
+	this.peek = function() {
+	  return this.storage[this.count-1]
+	  console.log("peek", this)
+	}
+	
+	}
+	
+	var myStack = new Stack();
+	
+	myStack.push(1);
+	myStack.push(2);
+	myStack.push(3);
+	console.log(myStack)
+	console.log(myStack.peek);
+	console.log(myStack.pop);
+	console.log(myStack.peek)
+
+	/////SETS
+
 function isPalindrome(string) {
 	let reversed = '';		  /// declare an empty string
 	for (let i = string.length -1; i >= 0; i--){ 	///// Set i to end of string then i- -
-		reversed += string[I]; 		//////// add each letter backwards to reversed
+		reversed += string[i]; 		//////// add each letter backwards to reversed
 	}
 	return string === reversed	//// compare string to reversed
 }
@@ -138,4 +210,24 @@ function productSum(array, multiplier = 1) { ////// Multiply by dept of array so
 	  return sum * multiplier;  ///// after going through the array multiply by dept and return
   }
   
+  var rangeSumBST = function(root, low, high) {
+    console.log("hello",root.left)
+    let sum = 0;
+
+    function recursion(node) {
+        if(!node){
+           return
+           }
+        if (node.val >= low && node.val <= high) {
+            sum+= node.val
+        } 
+            recursion(node.left)
+            recursion(node.right)
+        };  
+   
+    recursion(root)
+    return sum;
+
+};
+
 
