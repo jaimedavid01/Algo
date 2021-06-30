@@ -14,22 +14,23 @@
 ////// PALINDROME:
 // O(N) time | O(1) 
 
-///// STACKS!!!
-
+///Stacks
 var letters = [];
 
-var word = "cbddbc"
+var word = "racecar"
 var rword = "";
 
 for (var i = 0; i < word.length; i++) {
-  letters.push(word[i])
-  console.log(letters)
+///  letters.push(word[i])
+ letters.unshift(word[i])
+  console.log(letters, rword)
 }
 
-for (var i = 0; i < word.length; i++) {
-  rword += letters.pop()
-  console.log(rword)
-}
+rword = letters.join("")
+// for (var i = 0; i < word.length; i++) {
+//   rword += letters.pop()
+//   console.log(rword)
+// }
 
 if(rword === word){
   console.log(word + " is a palandrome")
@@ -85,6 +86,196 @@ var Stack = function(){
 	console.log(myStack.peek)
 
 	/////SETS
+	function mySet() {
+		//The var collection will hold the set
+		var collection = [];
+	  
+	  //This method will check the presence of an element and return true or false
+		this.has = function(element) {
+		  return(collection.indexOf(element) !== -1);
+		};
+	  
+	  //This method will return all the values in a set
+		this.values = function() {
+		  return collection;
+		};
+	  
+	  //This method will add an element to the set
+		this.add = function(element) {
+		  if(!this.has(element)){
+			collection.push(element);
+			return true;
+		  }
+		  return false;
+		};
+	  
+	  //This method willl remove an element from a set
+		this.remove =function(element) {
+		  if(this.has(element)){
+			index = collection.indexOf(element);
+			collection.splice(index,1);
+			return true;
+		  }
+		  return false;
+		};
+	  
+	  
+	  //This method will return the size of the collection
+		this.size = function(){
+		  return collection.length;
+		};
+	  
+	  
+	  //This method will return the union of two sets
+		this.union = function(otherSet) {
+		  var unionSet = new Set();
+		  var firstSet = this.values();
+		  var secondSet = otherSet.values();
+		  firstSet.forEach(function(e){
+			unionSet.add(e);
+		  });
+		return unionSet;
+		}
+	  
+	  
+	  //This method will return the intersection of two sets as a new set
+		this.intersection = function(otherSet) {
+		  var intersectionSet = new mySet();
+		  var firstSet = this.values();
+		  firstSet.forEach(function(e){
+			if(otherSet.has(e)){
+			  intersectionSet.add(e);
+			}
+		  })
+		  return intersectionSet;
+		}
+	  
+	  //This method will return the difference of two sets as a new set
+		  this.difference = function(otherSet) {
+		  var differenceSet = new mySet();
+		  var firstSet = this.values();
+		  firstSet.forEach(function(e){
+			if(!otherSet.has(e)){
+			  differenceSet.add(e);
+			}
+		  })
+		  return differenceSet;
+		}
+	  
+	  //this method will test if the set is a subset of a different set
+		this.subset = function(otherSet){
+		  var firstSet = this.values();
+		  return firstSet.every(function(value) {
+			return otherSet.has(value);
+		  })
+		}
+	  }
+	  
+	  var setA = new mySet();
+	  var setB = new mySet();
+	  setA.add("a");
+	  setB.add("b");
+	  setB.add("c");
+	  setB.add("a");
+	  setB.add("d");
+	  console.log(setA.subset(setB))
+	  console.log(setA.difference(setA))
+
+
+	  ///////////////////////////QUEUE
+	  function Queue(){
+		collections = []
+		this.print = function(){
+		  console.log(collection)
+		}
+	  
+		this.enqueue = function(element){
+		  collections.push(element);
+		}
+	  
+		this.dequeue = function(){
+		  collections.shift();
+		}
+	  
+		this.front = function() {
+		  return collection[0];
+		}
+	  
+		this.size = function() {
+		  return collection.length;
+		}
+	  
+		this.isEmpty = function(){
+		  return(collectrion.length === 0);
+	  }
+	  
+	  var = q = new Queue();
+	  q.enqueue("a");
+	  q.enqueue("b");
+	  q.enqueue("c");
+	  q.enqueue("d");
+	  q.print();
+	  q.front();
+	  q.print();
+
+
+
+	  ///////// Priority Queue
+
+	  function PriorityQueue(){
+		var collection = [];
+		this.printCollection = function(){
+		  console.log(collection)
+		}
+	  
+		this.enqueue = function(element){
+		  if(this.isEmpty()){
+			collection.push(element);
+		  } else {
+			var added = false;
+			for(var i = 0; i<collection.length; i++){
+			  if(element[1] < collection[i][1]){
+				collection.splice(i,0,element);
+				added = true;
+				break;
+			  }
+			}
+			if(!added){
+			  collection.push(element);
+			}
+		  }
+		};
+	  
+		this.dequeue = function(){
+		  var value = collection.shift();
+		  console.log(value[0]);
+		};
+	  
+		this.front = function(){
+		  console.log(collection[0])
+		};
+	  
+		this.size = function(){
+		  return collection.length;
+		};
+	  
+		this.isEmpty = function(){
+		  console.log(collection.length === 0)
+		};
+	  };
+	  
+	  var pq = new PriorityQueue();
+	  pq.enqueue(["Beau Cranes", 2]);
+	  pq.enqueue(["Quincy Larson", 3]);
+	  pq.enqueue(["jack", 1]);
+	  pq.printCollection();
+	  pq.dequeue();
+	  pq.front();
+	  pq.printCollection();
+	  
+
+
+	  //////////// Palandrome
 
 function isPalindrome(string) {
 	let reversed = '';		  /// declare an empty string
