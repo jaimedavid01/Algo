@@ -275,7 +275,7 @@ var Stack = function(){
 	  
 
 
-	  //////////// Palandrome
+	  /////////////// Palandrome
 
 function isPalindrome(string) {
 	let reversed = '';		  /// declare an empty string
